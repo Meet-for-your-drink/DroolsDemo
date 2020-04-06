@@ -1,0 +1,7 @@
+package droolsRule;
+
+rule "paramCheckNotNull"
+    salience 100    #规则优先级，值越大优先级越高
+    when
+    then
+end
