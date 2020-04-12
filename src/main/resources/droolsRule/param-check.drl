@@ -1,7 +1,12 @@
 package droolsRule;
+import com.duang.droolsdemo.entity.Customer
 
 rule "paramCheckNotNull"
-    salience 100    #规则优先级，值越大优先级越高
+    salience 100
+//    规则优先级，值越大优先级越高
     when
+        $customer:Customer(age >= 20)
     then
+        System.out.println($customer.toString());
+
 end
