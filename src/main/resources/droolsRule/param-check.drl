@@ -3,10 +3,30 @@ import com.duang.droolsdemo.entity.Customer
 
 rule "paramCheckNotNull"
     salience 100
+    lock-on-active true
 //    规则优先级，值越大优先级越高
     when
-        $customer:Customer(age >= 20)
+        $customer:Customer(age != null && name != null)
     then
-        System.out.println($customer.toString());
+        System.out.println($customer.getName() +" is legal");
 
 end
+
+rule "paramCheckAge20"
+    salience 99
+    when
+        $customer:Customer(age >=20)
+    then
+        System.out.println($customer.getName() +" Age is greater than 20");
+    end
+
+rule "paramChangeAge20"
+    salience 99
+    when
+        $customer:Customer(age < 20)
+    then
+        System.out.println($customer.getName() +" age is less then 20");
+        $customer.setAge(25);
+        update($customer)
+        System.out.println($customer.getName() +" update age to 25");
+     end

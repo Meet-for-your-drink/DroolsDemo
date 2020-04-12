@@ -23,7 +23,7 @@ class DroolsdemoApplicationTests {
     public void testDrools(){
         Customer customer = new Customer();
         customer.setName("Alice");
-        customer.setAge(20);
+        customer.setAge(15);
         customer.setTime(new Timestamp(System.currentTimeMillis()));
         kieSession.insert(customer);
         kieSession.fireAllRules();
